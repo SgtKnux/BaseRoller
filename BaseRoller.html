@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Force Base Roulette</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        h1 {
+            color: #0066cc;
+        }
+
+        button {
+            background-color: #0066cc;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        const bases = ["Maxwell-Gunter", "Eielson", "Elmendorf", "Joint Base Elmendorf-Richardson", "Davis-Monthan", "Luke", "Little Rock", "Beale", "Edwards", "Los Angeles", "March Air Reserve Base", "Travis", "Vandenberg", "Buckley", "Colorado Springs", "Peterson", "Schriever", "United States Air Force Academy", "Dover", "Joint Base Anacostia-Bolling", "Eglin", "Hurlburt Field", "MacDill", "Patrick", "Pensacola Florida", "Tyndall", "Moody", "Robins", "Hickam", "Joint Base Pearl Harbor - Hickam", "Mountain Home", "Scott AFB Guide", "Grissom Air Reserve Base", "McConnell", "Barksdale", "Andrews", "Joint Base Andrews", "Hanscom", "Columbus", "Keesler", "Whiteman", "Malmstrom", "Offutt", "Area 51", "Creech", "Nellis", "Joint Base McGuire-Dix-Lakehurst", "Cannon", "Holloman", "Kirtland", "Fayetteville North Carolina", "Pope Field", "Seymour Johnson", "Grand Forks", "Minot", "Wright-Patterson", "Altus", "Tinker", "Vance", "Charleston", "Joint Base Charleston", "Shaw", "Ellsworth", "Dyess", "Goodfellow", "Joint Base San Antonio", "Lackland", "Laughlin", "Randolph", "Red River Army Depot", "Sheppard", "Hill", "Hampton Roads", "Joint Base Langley-Eustis", "Langley", "Fairchild", "Joint Base Lewis-McChord", "McChord Field", "F. E. Warren", "Geilenkirchen NATO", "Ramstein", "Spangdahlem", "Andersen", "Aviano", "Kadena", "Misawa", "Yokota", "Kunsan", "Osan", "Moron", "Incirlik", "Izmir Air Station", "RAF Alconbury", "RAF Croughton", "RAF Lakenheath", "RAF Mildenhall"]
+
+            ;
+        function getRandomBase() {
+            return bases[Math.floor(Math.random() * bases.length)];
+        }
+
+        function roll() {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = '';
+            let startTime = new Date().getTime();
+            let interval = setInterval(() => {
+                let currentTime = new Date().getTime();
+                let elapsedTime = currentTime - startTime;
+
+                if (elapsedTime >= 5000) {
+                    clearInterval(interval);
+                    let finalBase = getRandomBase();
+                    resultElement.innerHTML = `You're going to ${finalBase}.<br><br>GLHF!`;
+                } else {
+                    resultElement.textContent = getRandomBase();
+                }
+            }, 100);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Air Force Base Roulette</h1>
+    <p><i>Made for the USAF/USSF Shippers Hub Discord server.</i></p>
+    <p><b>Roll to see which base you'll end up at.</b></p>
+    <button onclick="roll()">Roll</button>
+    <div id="result"></div>
+</body>
+
+</html>
